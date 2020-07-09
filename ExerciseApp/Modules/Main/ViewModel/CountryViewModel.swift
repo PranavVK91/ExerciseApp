@@ -7,9 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 final class CountryViewModel: NSObject {
     var countryModel: CountryModel?
+    var numberOfRows: Int {
+        self.countryModel?.details.count ?? 0
+    }
+    var rowHeight: CGFloat = 300
     
     func loadData(handler: @escaping(Bool) -> Void) {
         makeWebServiceCall(from: "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json", successHandler: { status, data in
