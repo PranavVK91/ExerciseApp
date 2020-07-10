@@ -10,7 +10,7 @@ import Foundation
 
 struct CountryModel: Codable {
     let title: String
-    let details: [CountryDetailsModel]
+    var details: [CountryDetailsModel]
     
     enum CodingKeys: String, CodingKey {
         case title = "title"

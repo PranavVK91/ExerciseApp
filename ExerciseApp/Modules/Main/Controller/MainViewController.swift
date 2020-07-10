@@ -74,7 +74,6 @@ class MainViewController: UIViewController {
     func configureTableView() {
         view.addSubview(countryTableView)
         countryTableView.register(CountryTableViewCell.self, forCellReuseIdentifier: "CountryTableViewCell")
-        countryTableView.rowHeight = 300
         countryTableView.isHidden = true
         countryTableView.separatorStyle = .none
         countryTableView.allowsSelection = false
@@ -124,10 +123,6 @@ class MainViewController: UIViewController {
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.numberOfRows
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        viewModel.rowHeight
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
