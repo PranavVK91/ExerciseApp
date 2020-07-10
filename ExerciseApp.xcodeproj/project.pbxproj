@@ -20,6 +20,8 @@
 		811C526D24B706FD0062F2CE /* CountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C526C24B706FD0062F2CE /* CountryModel.swift */; };
 		811C526F24B707130062F2CE /* CountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C526E24B707120062F2CE /* CountryViewModel.swift */; };
 		811C527124B77BE60062F2CE /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C527024B77BE60062F2CE /* CountryTableViewCell.swift */; };
+		811C527324B8512D0062F2CE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C527224B8512D0062F2CE /* Coordinator.swift */; };
+		811C527524B851390062F2CE /* AppCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C527424B851390062F2CE /* AppCordinator.swift */; };
 		A1FF89DDE1917298385BE06C /* Pods_ExerciseAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5C3D16460A346FA1AA2106 /* Pods_ExerciseAppTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +55,8 @@
 		811C526C24B706FD0062F2CE /* CountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModel.swift; sourceTree = "<group>"; };
 		811C526E24B707120062F2CE /* CountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewModel.swift; sourceTree = "<group>"; };
 		811C527024B77BE60062F2CE /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
+		811C527224B8512D0062F2CE /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		811C527424B851390062F2CE /* AppCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCordinator.swift; sourceTree = "<group>"; };
 		8287C817A50A884DF6552A1B /* Pods-ExerciseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExerciseApp.release.xcconfig"; path = "Target Support Files/Pods-ExerciseApp/Pods-ExerciseApp.release.xcconfig"; sourceTree = "<group>"; };
 		8AAF297F1186524BB4DC7CA1 /* Pods-ExerciseApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExerciseApp.debug.xcconfig"; path = "Target Support Files/Pods-ExerciseApp/Pods-ExerciseApp.debug.xcconfig"; sourceTree = "<group>"; };
 		AA5C3D16460A346FA1AA2106 /* Pods_ExerciseAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExerciseAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,7 +117,6 @@
 				811C525D24B6DEF60062F2CE /* Launch */,
 				811C525E24B6E16D0062F2CE /* Modules */,
 				811C526524B6E38D0062F2CE /* Utilities */,
-				811C523B24B5D8EB0062F2CE /* SceneDelegate.swift */,
 				811C524724B5D8EC0062F2CE /* Info.plist */,
 			);
 			path = ExerciseApp;
@@ -134,6 +137,9 @@
 				811C524424B5D8EC0062F2CE /* LaunchScreen.storyboard */,
 				811C524224B5D8EC0062F2CE /* Assets.xcassets */,
 				811C523924B5D8EB0062F2CE /* AppDelegate.swift */,
+				811C523B24B5D8EB0062F2CE /* SceneDelegate.swift */,
+				811C527224B8512D0062F2CE /* Coordinator.swift */,
+				811C527424B851390062F2CE /* AppCordinator.swift */,
 			);
 			path = Launch;
 			sourceTree = "<group>";
@@ -387,12 +393,14 @@
 			files = (
 				811C527124B77BE60062F2CE /* CountryTableViewCell.swift in Sources */,
 				811C526D24B706FD0062F2CE /* CountryModel.swift in Sources */,
+				811C527324B8512D0062F2CE /* Coordinator.swift in Sources */,
 				811C526F24B707130062F2CE /* CountryViewModel.swift in Sources */,
 				811C523E24B5D8EB0062F2CE /* MainViewController.swift in Sources */,
 				811C523A24B5D8EB0062F2CE /* AppDelegate.swift in Sources */,
 				811C526924B6EB8B0062F2CE /* Helper.swift in Sources */,
 				811C523C24B5D8EB0062F2CE /* SceneDelegate.swift in Sources */,
 				811C526724B6E8400062F2CE /* NetworkReachability.swift in Sources */,
+				811C527524B851390062F2CE /* AppCordinator.swift in Sources */,
 				811C526B24B702470062F2CE /* Service.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

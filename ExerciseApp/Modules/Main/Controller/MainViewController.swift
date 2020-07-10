@@ -15,24 +15,24 @@ class MainViewController: UIViewController {
     var uiRefresher = UIRefreshControl(forAutoLayout: ())
     let navigationBar = UINavigationBar(forAutoLayout: ())
     
-    let viewModel = CountryViewModel()
+    var viewModel = CountryViewModel()
     
     var canMakeWebServiceCall = true
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.view.backgroundColor = .white
         showLoadingAnimation()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        setUpNavigationBar()
-        configureTableView()
+        fetchDataAndUpdateView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        fetchDataAndUpdateView()
+        setUpNavigationBar()
+        configureTableView()
     }
     
     @objc func fetchDataAndUpdateView() {
@@ -87,10 +87,10 @@ class MainViewController: UIViewController {
     }
     
     func setTableViewConstraints() {
+        countryTableView.autoPinEdge(.top, to: .bottom, of: self.navigationBar)
         countryTableView.autoPinEdge(toSuperviewEdge: .bottom)
         countryTableView.autoPinEdge(toSuperviewEdge: .right)
         countryTableView.autoPinEdge(toSuperviewEdge: .left)
-        countryTableView.autoPinEdge(.top, to: .bottom, of: self.navigationBar)
     }
     
     func setUpUIRefresher() {
