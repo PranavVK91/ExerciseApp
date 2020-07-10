@@ -7,6 +7,7 @@ target 'ExerciseApp' do
 
   # Pods for ExerciseApp
     pod 'PureLayout'
+    pod 'SDWebImage'
 
   target 'ExerciseAppTests' do
     inherit! :search_paths

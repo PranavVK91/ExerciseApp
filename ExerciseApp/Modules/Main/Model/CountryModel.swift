@@ -23,6 +23,10 @@ struct CountryDetailsModel: Codable {
     let description: String?
     let imageUrl: String?
     
+    func getImageUrl() -> URL? {
+        makeUrlFromString(stringUrl: imageUrl ?? "")
+    }
+    
     enum CodingKeys: String, CodingKey {
         case title = "title"
         case description = "description"
