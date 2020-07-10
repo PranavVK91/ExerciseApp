@@ -13,21 +13,26 @@ class MainViewController: UIViewController {
     var countryTableView = UITableView(forAutoLayout: ())
     let loader = UIActivityIndicatorView(forAutoLayout: ())
     var uiRefresher = UIRefreshControl(forAutoLayout: ())
-    let navigationBar: UINavigationBar = UINavigationBar()
+    let navigationBar = UINavigationBar(forAutoLayout: ())
     
-    let viewModel = CountryViewModel()
+    var viewModel = CountryViewModel()
     
     var canMakeWebServiceCall = true
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.view.backgroundColor = .white
+        showLoadingAnimation()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        configureTableView()
-        setUpNavigationBar()
+        fetchDataAndUpdateView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        fetchDataAndUpdateView()
+        setUpNavigationBar()
+        configureTableView()
     }
     
     @objc func fetchDataAndUpdateView() {
@@ -69,8 +74,9 @@ class MainViewController: UIViewController {
     func configureTableView() {
         view.addSubview(countryTableView)
         countryTableView.register(CountryTableViewCell.self, forCellReuseIdentifier: "CountryTableViewCell")
-        countryTableView.rowHeight = 300
         countryTableView.isHidden = true
+        countryTableView.separatorStyle = .none
+        countryTableView.allowsSelection = false
         setTableViewDelegate()
         setTableViewConstraints()
         setUpUIRefresher()
@@ -81,10 +87,10 @@ class MainViewController: UIViewController {
     }
     
     func setTableViewConstraints() {
+        countryTableView.autoPinEdge(.top, to: .bottom, of: self.navigationBar)
         countryTableView.autoPinEdge(toSuperviewEdge: .bottom)
         countryTableView.autoPinEdge(toSuperviewEdge: .right)
         countryTableView.autoPinEdge(toSuperviewEdge: .left)
-        countryTableView.autoPinEdge(.top, to: .top, of: self.view, withOffset: 40)
     }
     
     func setUpUIRefresher() {
@@ -96,16 +102,15 @@ class MainViewController: UIViewController {
     
     func setUpNavigationBar() {
         self.view.addSubview(navigationBar)
-        navigationBar.autoPinEdge(toSuperviewEdge: .top)
+        navigationBar.autoPinEdge(toSuperviewSafeArea: .top)
         navigationBar.autoPinEdge(toSuperviewEdge: .right)
         navigationBar.autoPinEdge(toSuperviewEdge: .left)
-        navigationBar.autoSetDimensions(to: CGSize(width: self.view.frame.width, height: 80))
         let navigationItem = UINavigationItem(title: "")
         navigationBar.setItems([navigationItem], animated: true)
     }
     
     func updateNavigationBarTitle(with title: String) {
-        self.navigationItem.title = title
+        self.navigationBar.topItem?.title = title
     }
     
     func showAlert(title : String , Message : String) {
@@ -118,10 +123,6 @@ class MainViewController: UIViewController {
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.numberOfRows
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        viewModel.rowHeight
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

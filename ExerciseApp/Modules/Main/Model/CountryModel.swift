@@ -10,7 +10,7 @@ import Foundation
 
 struct CountryModel: Codable {
     let title: String
-    let details: [CountryDetailsModel]
+    var details: [CountryDetailsModel]
     
     enum CodingKeys: String, CodingKey {
         case title = "title"
@@ -22,6 +22,10 @@ struct CountryDetailsModel: Codable {
     let title: String?
     let description: String?
     let imageUrl: String?
+    
+    func getImageUrl() -> URL? {
+        makeUrlFromString(stringUrl: imageUrl ?? "")
+    }
     
     enum CodingKeys: String, CodingKey {
         case title = "title"
