@@ -8,6 +8,10 @@
 
 import Foundation
 
+/*
+ Method to make webservice call. Expecting string url as parameter and returns responce in Data format.
+ This method can be used for other api's as well.
+ */
 func makeWebServiceCall(from url: String, successHandler: @escaping(String, Data) -> Void, failureHandler: @escaping() -> Void) {
     guard let url = makeUrlFromString(stringUrl: url) else { return }
     URLSession.shared.dataTask(with: url, completionHandler: { data, response, error in

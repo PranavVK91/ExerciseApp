@@ -10,6 +10,9 @@ import Foundation
 import SystemConfiguration
 import SystemConfiguration.CaptiveNetwork
 
+/*
+ Method to check network reachability, can be used before webservice call.
+ */
 func connectedToNetwork() -> Bool {
     
     var zeroAddress = sockaddr_in()

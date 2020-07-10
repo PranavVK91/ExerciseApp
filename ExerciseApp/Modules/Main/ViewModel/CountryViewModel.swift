@@ -15,6 +15,9 @@ final class CountryViewModel: NSObject {
         self.countryModel?.details.count ?? 0
     }
     
+    /*
+     Method to make webservice call, parse json and update the country model with the result
+     */
     func loadData(handler: @escaping(Bool) -> Void) {
         makeWebServiceCall(from: "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json", successHandler: { status, data in
             do {
