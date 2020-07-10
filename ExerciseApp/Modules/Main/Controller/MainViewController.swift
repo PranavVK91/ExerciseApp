@@ -10,13 +10,12 @@ import UIKit
 import PureLayout
 
 class MainViewController: UIViewController {
-    var countryTableView = UITableView(forAutoLayout: ())
+    let countryTableView = UITableView(forAutoLayout: ())
     let loader = UIActivityIndicatorView(forAutoLayout: ())
-    var uiRefresher = UIRefreshControl(forAutoLayout: ())
+    let uiRefresher = UIRefreshControl(forAutoLayout: ())
     let navigationBar = UINavigationBar(forAutoLayout: ())
     
     var viewModel = CountryViewModel()
-    
     var canMakeWebServiceCall = true
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +33,8 @@ class MainViewController: UIViewController {
         setUpNavigationBar()
         configureTableView()
     }
+    
+    // MARK:- WebService Call
     
     @objc func fetchDataAndUpdateView() {
         if connectedToNetwork() && canMakeWebServiceCall {
@@ -62,6 +63,8 @@ class MainViewController: UIViewController {
             showAlert(title: "No Internet Connectivity", Message: "Please connect to mobile data or WiFi")
         }
     }
+    
+    //MARK:- Methods for updating UI
     
     func showLoadingAnimation() {
         loader.color = .black
@@ -119,6 +122,8 @@ class MainViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 }
+
+// MARK:- Table view data source methods.
 
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -8,6 +8,9 @@
 
 import Foundation
 
+/*
+ Method to convert string to URL.
+ */
 func makeUrlFromString(stringUrl: String) -> URL? {
     return URL(string: stringUrl)
 }

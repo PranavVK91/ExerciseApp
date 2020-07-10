@@ -66,6 +66,9 @@ class CountryTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /*
+     Method to update the contents of reusable cell, and expecting model as parameter.
+     */
     func bind(_ viewModel: CountryDetailsModel?) {
         guard let viewModel = viewModel else { return }
         titleLabel.text = viewModel.title ?? ""
@@ -73,6 +76,8 @@ class CountryTableViewCell: UITableViewCell {
         countryDetailsImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         countryDetailsImageView.sd_setImage(with: viewModel.getImageUrl(), placeholderImage: UIImage(named: "placeHolder"))
     }
+    
+    // MARK:- Methods to update cell constraints
     
     func updateTitleLabelConstraints() {
         titleLabel.autoPinEdge(toSuperviewEdge: .top)
