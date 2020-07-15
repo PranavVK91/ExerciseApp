@@ -32,7 +32,7 @@ class CountryTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .center
-        label.numberOfLines = 10
+        label.numberOfLines = 20
         label.font = UIFont(name:"HelveticaNeue", size: 16.0)
         label.layer.shadowOpacity = 0.5
         label.layer.shadowRadius = 0.5
@@ -52,14 +52,14 @@ class CountryTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addSubview(titleLabel)
-        addSubview(descriptionLabel)
-        addSubview(countryDetailsImageView)
+        self.addSubview(titleLabel)
+        self.addSubview(descriptionLabel)
+        self.addSubview(countryDetailsImageView)
         titleLabel.bringSubviewToFront(countryDetailsImageView)
         descriptionLabel.bringSubviewToFront(countryDetailsImageView)
-        updateTitleLabelConstraints()
-        updateDescriptionLabelConstraints()
-        countryDetailsImageView.autoPinEdgesToSuperviewEdges()
+        configureTitleLabel()
+        configureCountryDetailsImageView()
+        configureDescriptionLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -73,30 +73,39 @@ class CountryTableViewCell: UITableViewCell {
         guard let viewModel = viewModel else { return }
         titleLabel.text = viewModel.title ?? ""
         descriptionLabel.text = viewModel.description ?? ""
+        print(viewModel.description ?? "")
         countryDetailsImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         countryDetailsImageView.sd_setImage(with: viewModel.getImageUrl(), placeholderImage: UIImage(named: "placeHolder"))
     }
     
     // MARK:- Methods to update cell constraints
     
-    func updateTitleLabelConstraints() {
-        titleLabel.autoPinEdge(toSuperviewEdge: .top)
-        titleLabel.autoPinEdge(toSuperviewEdge: .right)
-        titleLabel.autoPinEdge(toSuperviewEdge: .left)
-        titleLabel.autoSetDimensions(to: CGSize(width: self.contentView.frame.width, height: 50))
+    func configureTitleLabel() {
+        titleLabel.autoPinEdge(toSuperviewSafeArea: .top, withInset: 5)
+        titleLabel.autoPinEdge(toSuperviewSafeArea: .left)
+        titleLabel.autoPinEdge(toSuperviewSafeArea: .right)
+        titleLabel.autoSetDimension(.height, toSize: 25)
     }
     
-    func updateDescriptionLabelConstraints() {
-        descriptionLabel.autoPinEdge(toSuperviewEdge: .right)
-        descriptionLabel.autoPinEdge(toSuperviewEdge: .left)
-        descriptionLabel.autoSetDimensions(to: CGSize(width: self.contentView.frame.width, height: 150))
-        descriptionLabel.autoCenterInSuperview()
+    func configureCountryDetailsImageView() {
+        countryDetailsImageView.autoPinEdge(.top, to:.bottom, of: titleLabel, withOffset: 5)
+        countryDetailsImageView.autoPinEdge(toSuperviewSafeArea: .left, withInset: 10)
+        countryDetailsImageView.autoPinEdge(toSuperviewSafeArea: .bottom, withInset: 20, relation: .greaterThanOrEqual)
+        countryDetailsImageView.autoSetDimension(.width, toSize: 200, relation: .equal)
+        countryDetailsImageView.autoSetDimension(.height, toSize: 200, relation: .equal)
+        countryDetailsImageView.contentMode = .scaleAspectFit
+    }
+    
+    func configureDescriptionLabel() {
+        descriptionLabel.autoPinEdge(.top, to: .bottom, of: titleLabel, withOffset: 5)
+        descriptionLabel.autoPinEdge(.left, to: .right, of: countryDetailsImageView, withOffset: 5)
+        descriptionLabel.autoPinEdge(toSuperviewSafeArea: .right, withInset: 10)
+        descriptionLabel.autoPinEdge(toSuperviewSafeArea: .bottom, withInset: 20, relation: .equal)
+        descriptionLabel.textAlignment = .left
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let padding = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 10)
-        bounds = bounds.inset(by: padding)
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 5
         self.layer.borderWidth = 2

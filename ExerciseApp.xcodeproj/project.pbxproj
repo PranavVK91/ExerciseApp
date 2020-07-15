@@ -21,7 +21,8 @@
 		811C526F24B707130062F2CE /* CountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C526E24B707120062F2CE /* CountryViewModel.swift */; };
 		811C527124B77BE60062F2CE /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C527024B77BE60062F2CE /* CountryTableViewCell.swift */; };
 		811C527324B8512D0062F2CE /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C527224B8512D0062F2CE /* Coordinator.swift */; };
-		811C527524B851390062F2CE /* AppCordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C527424B851390062F2CE /* AppCordinator.swift */; };
+		811C527524B851390062F2CE /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811C527424B851390062F2CE /* AppCoordinator.swift */; };
+		816BAD1F24BEE50000E60B24 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816BAD1E24BEE50000E60B24 /* Constants.swift */; };
 		A1FF89DDE1917298385BE06C /* Pods_ExerciseAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5C3D16460A346FA1AA2106 /* Pods_ExerciseAppTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +57,8 @@
 		811C526E24B707120062F2CE /* CountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewModel.swift; sourceTree = "<group>"; };
 		811C527024B77BE60062F2CE /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		811C527224B8512D0062F2CE /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		811C527424B851390062F2CE /* AppCordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCordinator.swift; sourceTree = "<group>"; };
+		811C527424B851390062F2CE /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		816BAD1E24BEE50000E60B24 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8287C817A50A884DF6552A1B /* Pods-ExerciseApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExerciseApp.release.xcconfig"; path = "Target Support Files/Pods-ExerciseApp/Pods-ExerciseApp.release.xcconfig"; sourceTree = "<group>"; };
 		8AAF297F1186524BB4DC7CA1 /* Pods-ExerciseApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExerciseApp.debug.xcconfig"; path = "Target Support Files/Pods-ExerciseApp/Pods-ExerciseApp.debug.xcconfig"; sourceTree = "<group>"; };
 		AA5C3D16460A346FA1AA2106 /* Pods_ExerciseAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExerciseAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,7 +141,8 @@
 				811C523924B5D8EB0062F2CE /* AppDelegate.swift */,
 				811C523B24B5D8EB0062F2CE /* SceneDelegate.swift */,
 				811C527224B8512D0062F2CE /* Coordinator.swift */,
-				811C527424B851390062F2CE /* AppCordinator.swift */,
+				811C527424B851390062F2CE /* AppCoordinator.swift */,
+				816BAD1E24BEE50000E60B24 /* Constants.swift */,
 			);
 			path = Launch;
 			sourceTree = "<group>";
@@ -400,8 +403,9 @@
 				811C526924B6EB8B0062F2CE /* Helper.swift in Sources */,
 				811C523C24B5D8EB0062F2CE /* SceneDelegate.swift in Sources */,
 				811C526724B6E8400062F2CE /* NetworkReachability.swift in Sources */,
-				811C527524B851390062F2CE /* AppCordinator.swift in Sources */,
+				811C527524B851390062F2CE /* AppCoordinator.swift in Sources */,
 				811C526B24B702470062F2CE /* Service.swift in Sources */,
+				816BAD1F24BEE50000E60B24 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,6 +561,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XYG6KB478H;
 				INFOPLIST_FILE = ExerciseApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -576,6 +581,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XYG6KB478H;
 				INFOPLIST_FILE = ExerciseApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

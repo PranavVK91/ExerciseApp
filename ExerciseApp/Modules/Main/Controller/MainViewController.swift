@@ -13,7 +13,6 @@ class MainViewController: UIViewController {
     let countryTableView = UITableView(forAutoLayout: ())
     let loader = UIActivityIndicatorView(forAutoLayout: ())
     let uiRefresher = UIRefreshControl(forAutoLayout: ())
-    let navigationBar = UINavigationBar(forAutoLayout: ())
     
     var viewModel = CountryViewModel()
     var canMakeWebServiceCall = true
@@ -21,7 +20,7 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.view.backgroundColor = .white
-        showLoadingAnimation()
+        configureTableView()
     }
     
     override func viewDidLoad() {
@@ -30,8 +29,7 @@ class MainViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        setUpNavigationBar()
-        configureTableView()
+        super.viewDidAppear(animated)
     }
     
     // MARK:- WebService Call
@@ -55,11 +53,13 @@ class MainViewController: UIViewController {
                     weak var weakself = self
                     weakself?.canMakeWebServiceCall = true
                     DispatchQueue.main.async {
+                        weakself?.loader.stopAnimating()
                         weakself?.showAlert(title: "Unable to fetch data", Message: "Please refresh")
                     }
                 }
             })
         } else {
+            self.uiRefresher.endRefreshing()
             showAlert(title: "No Internet Connectivity", Message: "Please connect to mobile data or WiFi")
         }
     }
@@ -77,7 +77,6 @@ class MainViewController: UIViewController {
     func configureTableView() {
         view.addSubview(countryTableView)
         countryTableView.register(CountryTableViewCell.self, forCellReuseIdentifier: "CountryTableViewCell")
-        countryTableView.isHidden = true
         countryTableView.separatorStyle = .none
         countryTableView.allowsSelection = false
         setTableViewDelegate()
@@ -90,7 +89,7 @@ class MainViewController: UIViewController {
     }
     
     func setTableViewConstraints() {
-        countryTableView.autoPinEdge(.top, to: .bottom, of: self.navigationBar)
+        countryTableView.autoPinEdge(toSuperviewSafeArea: .top)
         countryTableView.autoPinEdge(toSuperviewEdge: .bottom)
         countryTableView.autoPinEdge(toSuperviewEdge: .right)
         countryTableView.autoPinEdge(toSuperviewEdge: .left)
@@ -103,23 +102,14 @@ class MainViewController: UIViewController {
         uiRefresher.addTarget(self, action: #selector(fetchDataAndUpdateView), for: .valueChanged)
     }
     
-    func setUpNavigationBar() {
-        self.view.addSubview(navigationBar)
-        navigationBar.autoPinEdge(toSuperviewSafeArea: .top)
-        navigationBar.autoPinEdge(toSuperviewEdge: .right)
-        navigationBar.autoPinEdge(toSuperviewEdge: .left)
-        let navigationItem = UINavigationItem(title: "")
-        navigationBar.setItems([navigationItem], animated: true)
-    }
-    
     func updateNavigationBarTitle(with title: String) {
-        self.navigationBar.topItem?.title = title
+        self.navigationController?.navigationBar.topItem?.title = title
     }
     
     func showAlert(title : String , Message : String) {
         let alert = UIAlertController(title: title, message: Message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: false, completion: nil)
     }
 }
 

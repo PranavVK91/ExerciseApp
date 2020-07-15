@@ -1,5 +1,5 @@
 //
-//  AppCordinator.swift
+//  AppCoordinator.swift
 //  ExerciseApp
 //
 //  Created by Pranav V K on 10/07/20.
@@ -23,6 +23,6 @@ class AppCoordinator: Coordinator {
     func start() {
         let viewConroller = MainViewController()
         viewConroller.modalPresentationStyle = .fullScreen
-        navigationController.present(viewConroller, animated: false, completion: nil)
+        navigationController.pushViewController(viewConroller, animated: false)
     }
 }
